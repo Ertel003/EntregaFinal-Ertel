@@ -25,5 +25,5 @@ class EntregableForm(forms.Form):
     entregado = forms.BooleanField(required=False, initial=False)
     estudiante = forms.ModelChoiceField(
         queryset=None, label="Estudiante")  # Se llenará en la vista
-    
-#holaaaaa
+
+#gato 
