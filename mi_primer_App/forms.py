@@ -26,3 +26,6 @@ class EntregableForm(forms.Form):
     estudiante = forms.ModelChoiceField(
         queryset=None, label="Estudiante")  # Se llenará en la vista
 
+class BuscarCursoForm(forms.Form):
+    nombre = forms.CharField(label="Nombre del curso", max_length=100, required=False)
+    activo = forms.BooleanField(required=False, initial=True)  # Campo para filtrar por cursos activos
