@@ -31,7 +31,7 @@ def crear_curso(request):
             return redirect('cursos')
     else:
         form = CursoForm()
-        return render(request, 'mi_primer_app/crear_curso.html', {'form': form})
+        return render(request, 'mi_primer_App/crear_curso.html', {'form': form})
 
 
 def crear_estudiante(request):
@@ -50,19 +50,19 @@ def crear_estudiante(request):
             return redirect('inicio')
     else:
         form = EstudianteForm()
-        return render(request, 'mi_primer_app/crear_estudiante.html', {'form': form})
+        return render(request, 'mi_primer_App/crear_estudiante.html', {'form': form})
 
 
 def cursos(request):
     cursos = Curso.objects.all()
-    return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos})
+    return render(request, 'mi_primer_App/cursos.html', {'cursos': cursos})
 
 
 def buscar_cursos(request):
     if request.method == 'GET':
         nombre = request.GET.get('nombre', '')
         cursos = Curso.objects.filter(nombre__icontains=nombre)
-        return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
+        return render(request, 'mi_primer_App/cursos.html', {'cursos': cursos, 'nombre': nombre})
 
 def crear_entregable(request):
     if request.method == 'POST':
@@ -79,5 +79,6 @@ def crear_entregable(request):
             return redirect('inicio')
     else:
         form = EntregableForm()
-        return render(request, 'mi_primer_app/crear_entregable.html', {'form': form})
-    
+        form.fields['estudiante'].queryset = Estudiante.objects.all()
+    return render(request, 'mi_primer_App/crear_entregable.html', {'form': form})
+
