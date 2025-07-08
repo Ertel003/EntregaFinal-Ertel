@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Curso, Estudiante, Entregable
-from .forms import CursoForm, EstudianteForm, EntregableForm
+from .forms import CursoForm, EstudianteForm, EntregableForm, BuscarCursoForm
 
 # Create your views here.
 
@@ -52,17 +52,29 @@ def crear_estudiante(request):
         form = EstudianteForm()
         return render(request, 'mi_primer_App/crear_estudiante.html', {'form': form})
 
+def estudiantes(request):
+    estudiantes = Estudiante.objects.all()
+    return render(request, 'mi_primer_App/estudiantes.html', {'estudiantes': estudiantes})
+
 
 def cursos(request):
     cursos = Curso.objects.all()
     return render(request, 'mi_primer_App/cursos.html', {'cursos': cursos})
 
-
-def buscar_cursos(request):
-    if request.method == 'GET':
+def buscar_curso(request):
+    nombre = request.GET.get('nombre', '')
+    if nombre:
         nombre = request.GET.get('nombre', '')
         cursos = Curso.objects.filter(nombre__icontains=nombre)
-        return render(request, 'mi_primer_App/cursos.html', {'cursos': cursos, 'nombre': nombre})
+    else:
+        cursos = Curso.objects.all()
+    return render(request, 'mi_primer_App/cursos.html', context={'cursos': cursos,})
+
+# def buscar_cursos(request):
+#     if request.method == 'GET':
+#         nombre = request.GET.get('nombre', '')
+#         cursos = Curso.objects.filter(nombre__icontains=nombre)
+#         return render(request, 'mi_primer_App/cursos.html', {'cursos': cursos, 'nombre': nombre})
 
 def crear_entregable(request):
     if request.method == 'POST':
@@ -77,6 +89,7 @@ def crear_entregable(request):
             )
             nuevo_entregable.save()
             return redirect('inicio')
+            
     else:
         form = EntregableForm()
         form.fields['estudiante'].queryset = Estudiante.objects.all()

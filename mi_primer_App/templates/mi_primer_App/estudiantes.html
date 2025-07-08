@@ -1,0 +1,21 @@
+{% extends "padre.html" %}
+
+{% block title %} Estudiantes {% endblock %}
+
+{% block content %}
+
+<h2>Lista de Estudiantes</h2>
+<ul>
+    {% for estudiante in estudiantes %}
+        <li>{{ estudiante.nombre }} {{ estudiante.apellido }}</li>
+    {% empty %}
+        <li>No hay estudiantes registrados.</li>
+    {% endfor %}
+</ul>
+
+<div>
+    <a href="{% url 'crear-estudiante' %}" class="btn btn-primary" style="padding: 8px 16px; font-size: 16px; border-radius: 5px; text-decoration: none; color: white; background-color:#4CAF50; border: none;">
+    Agregar Estudiante</a>
+</div>
+
+{% endblock %}
