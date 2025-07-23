@@ -1,0 +1,18 @@
+{% extends "padre.html" %}
+
+{% block title %} Eliminar Curso {% endblock %}
+
+{% block content %}
+
+<h2>¿Estás seguro que deseas eliminar este curso?</h2>
+<p>{{ object.nombre }}</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger" style="padding: 8px 16px; font-size: 16px; border-radius: 5px; text-decoration: none; color: white; border: none;">
+        Eliminar Curso<button>
+</form>
+<a href="{% url 'cursos' %}">Cancelar</a>
+
+
+
+{% endblock %}

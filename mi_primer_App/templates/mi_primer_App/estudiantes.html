@@ -7,14 +7,18 @@
 <h2>Lista de Estudiantes</h2>
 <ul>
     {% for estudiante in estudiantes %}
-        <li>{{ estudiante.nombre }} {{ estudiante.apellido }}</li>
+        <li>{{ estudiante.nombre }} {{ estudiante.apellido }}
+        <a href="{% url 'estudiante-detail' estudiante.pk %}" class= "btn btn-sm btn btn-info" style= "border-radius: 5px">Ver Detalles</a>
+        <a href="{% url 'estudiante-update' estudiante.pk %}" class= "btn btn-sm btn btn-warning" style= "border-radius: 5px">Actualizar</a>
+        <a href="{% url 'estudiante-delete' estudiante.pk %}" class= "btn btn-sm btn btn-danger" style= "border-radius: 5px">Eliminar</a>
+        </li>
     {% empty %}
         <li>No hay estudiantes registrados.</li>
     {% endfor %}
 </ul>
 
 <div>
-    <a href="{% url 'crear-estudiante' %}" class="btn btn-primary" style="padding: 8px 16px; font-size: 16px; border-radius: 5px; text-decoration: none; color: white; background-color:#4CAF50; border: none;">
+    <a href="{% url 'crear-estudiante' %}" class="btn btn-primary" style="padding: 8px 16px; font-size: 16px; border-radius: 5px; text-decoration: none; color: white; border: none;">
     Agregar Estudiante</a>
 </div>
 

@@ -15,12 +15,16 @@
 
 <ul>
     {% for curso in cursos %}
-        <li>{{ curso.nombre }}</li>
+        <li>{{ curso.nombre }}
+        <a href="{% url 'curso-detail' curso.pk %}" class= "btn btn-sm btn btn-info" style= "border-radius: 5px">Ver Detalles</a>
+        <a href="{% url 'curso-update' curso.pk %}" class= "btn btn-sm btn btn-warning" style= "border-radius: 5px">Actualizar</a>
+        <a href="{% url 'curso-delete' curso.pk %}" class= "btn btn-sm btn btn-danger" style= "border-radius: 5px">Eliminar</a>
+        </li>
     {% empty %}
         <li>No hay cursos disponibles.</li>
     {% endfor %}
 </ul>
 
-<a href="{% url 'crear-curso' %}">Agregar Curso</a>
+<a href="{% url 'crear-curso' %}" class="btn btn-primary" style="padding: 8px 16px; font-size: 16px; border-radius: 5px; text-decoration: none; color: white; border: none;">Agregar Curso</a>
 
 {% endblock %}

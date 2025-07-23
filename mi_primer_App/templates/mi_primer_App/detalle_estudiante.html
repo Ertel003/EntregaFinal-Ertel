@@ -1,0 +1,15 @@
+{% extends "padre.html" %}
+
+{% block title %} Detalle del Estudiante {% endblock %}
+
+{% block content %}
+
+<h2>Detalle del Estudiante</h2>
+<p><strong>Nombre:</strong> {{ estudiante.nombre }}</p>
+<p><strong>Apellido:</strong> {{ estudiante.apellido }}</p>
+<p><strong>Edad:</strong> {{ estudiante.edad }}</p>
+<p><strong>Email:</strong> {{ estudiante.email }}</p>
+
+
+
+{% endblock %}

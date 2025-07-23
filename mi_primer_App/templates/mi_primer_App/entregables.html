@@ -1,0 +1,30 @@
+{% extends "padre.html" %}
+
+{% block title %} Entregas {% endblock %}
+
+{% block content %}
+
+<h2>Lista de Entregas</h2>
+
+<form method="GET" action="{% url 'buscar-entregable' %}">
+    <input type="text" name="nombre" placeholder="Buscar entrega..." value="{{ nombre }}">
+    <button type="submit">Buscar</button>
+</form>
+
+<h2>Entregas: </h2>
+
+<ul>
+    {% for entregas in entregable %}
+        <li>{{ entregas.nombre }}
+        <a href="{% url 'entrega-detail' entregas.pk %}" class= "btn btn-sm btn btn-info" style= "border-radius: 5px">Ver Detalles</a>
+        <a href="{% url 'entrega-update' entregas.pk %}" class= "btn btn-sm btn btn-warning" style= "border-radius: 5px">Actualizar</a>
+        <a href="{% url 'entrega-delete' entregas.pk %}" class= "btn btn-sm btn btn-danger" style= "border-radius: 5px">Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay entregas disponibles.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'crear-entregable' %}"class="btn btn-primary" style="padding: 8px 16px; font-size: 16px; border-radius: 5px; text-decoration: none; color: white; border: none;">Crear Entrega</a>
+
+{% endblock %}
