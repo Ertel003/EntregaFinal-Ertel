@@ -33,7 +33,6 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'inicio' %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about' %}">About me</a></li>
                         {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'cursos' %}">Cursos</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'estudiantes' %}">Estudiantes</a></li>
@@ -41,10 +40,10 @@
                             <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'perfil' %}">{{ user.username }}</a>
                         </li>
                         <li class="nav-item">
-                                <form action="{% url "logout" %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-primary">Cerrar Sesión</button>
-                                </form>
+                            <form action="{% url "logout" %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Cerrar Sesión</button>
+                            </form>
                         </li>
                         {% else %} 
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'login' %}">Iniciar Sesión</a></li> 

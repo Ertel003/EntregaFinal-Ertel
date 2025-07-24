@@ -10,3 +10,4 @@ urlpatterns = [
     path("editar-perfil/", ProfileUpdateView.as_view(), name="editar_perfil"),
     path('update-avatar/', AvatarUpdateView.as_view(), name='avatar-update'),
 ]
+

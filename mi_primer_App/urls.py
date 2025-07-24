@@ -8,7 +8,6 @@ from .views import (inicio,about, CursoCreateView, EstudianteCreateView,
 
 urlpatterns = [
     path('', inicio, name='inicio'),  
-    path('about/', about, name='about'),  # Assuming 'inicio' serves the about page
     path('crear-curso/', CursoCreateView.as_view(), name='crear-curso'),
     path('cursos/', CursoListView.as_view(), name='cursos'),
     path('detalles-curso/<int:pk>', CursoDetailView.as_view(),name='curso-detail'),
