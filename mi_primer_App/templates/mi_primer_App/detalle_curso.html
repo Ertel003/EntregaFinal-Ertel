@@ -9,6 +9,12 @@
 <p><strong>Descripción:</strong> {{ curso.descripcion }}</p>
 <p><strong>Fecha de Inicio:</strong> {{ curso.fecha_inicio }}</p>
 
+{% if user.is_authenticated %}
+<a href="{% url 'crear-entregable' %}" class="btn btn-primary" style="padding: 8px 16px; font-size: 16px; border-radius: 5px; text-decoration: none; color: white; border: none;">Crear Entrega</a>
+<a href="{% url 'entregables' %}" class="btn btn-primary" style="padding: 8px 16px; font-size: 16px; border-radius: 5px; text-decoration: none; color: white; border: none;">Ver Entregas</a>
+{% else %}
+<p>Iniciá sesión para crear una entrega.</p>
+{% endif %}
 
 
 {% endblock %}

@@ -3,10 +3,9 @@ from .models import Curso, Estudiante, Entregable
 from .forms import CursoForm, EstudianteForm, EntregableForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
-#from django.http import HttpResponse
 
 def inicio(request):
     return render(request, 'mi_primer_App/inicio.html')
@@ -128,11 +127,13 @@ def buscar_curso(request):
 #         cursos = Curso.objects.filter(nombre__icontains=nombre)
 #         return render(request, 'mi_primer_App/cursos.html', {'cursos': cursos, 'nombre': nombre})
 
-class EntregableCreateView(CreateView):
+
+class EntregableCreateView(LoginRequiredMixin, CreateView):
     model = Entregable
     form_class = EntregableForm
     template_name = 'mi_primer_App/crear_entregable.html'
     success_url = reverse_lazy('entregables')
+    login_url = 'login'
 
 class EntregableListView(ListView):
     model = Entregable

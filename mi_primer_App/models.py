@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Curso(models.Model):
@@ -28,6 +28,7 @@ class Entregable(models.Model):
     fecha_entrega = models.DateField()
     entregado = models.BooleanField(default=False)
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return f"{self.nombre} - {self.estudiante.nombre} {self.estudiante.apellido}"
